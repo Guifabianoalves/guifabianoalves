@@ -1,38 +1,39 @@
 <?php 	
 	class Dna {
-		private $dna;
+		private $sequence;
 		private $protein;
-		private $aminoAcid;
+		public $aminoAcid;
+		private $lenght;
 
 		public function __construct() {
 	        $this->sequence     = '';
-	        $this->protein = '';
+	        $this->protein = array();
 	        $this->lenght = 0;
 	        $this->aminoAcid = array(
-				'AAA' => 'F',	'AAG' => 'F',	
-				'AAT' => 'L',	'AAC' => 'L',	'GAA' => 'L',	'GAG' => 'L',	'GAT' => 'L',	'GAC' => 'L',	
-				'TAA' => 'I',	'TAG' => 'I',	'TAT' => 'I',	
-				'TAC' => 'M',	
-				'CAA' => 'V',	'CAG' => 'V',	'CAT' => 'V',	'CAC' => 'V',	
-				'AGA' => 'S',	'AGG' => 'S',	'AGT' => 'S',	'AGC' => 'S',	
-				'GGA' => 'P',	'GGG' => 'P',	'GGT' => 'P',	'GGC' => 'P',	
-				'TGA' => 'T',	'TGG' => 'T',	'TGT' => 'T',	'TGC' => 'T',	
-				'CGA' => 'A',	'CGG' => 'A',	'CGT' => 'A',	'CGC' => 'A',	
-				'ATA' => 'Y',	'ATG' => 'Y',	
-				'ATT' => '*',	'ATC' => '*',	
-				'GTA' => 'H',	'GTG' => 'H',	
-				'GTT' => 'Q',	'GTC' => 'Q',	
-				'TTA' => 'N',	'TTG' => 'N',	
-				'TTT' => 'K',	'TTC' => 'K',	
-				'CTA' => 'D',	'CTG' => 'D',	
-				'CTT' => 'E',	'CTC' => 'E',	
-				'ACA' => 'C',	'ACG' => 'C',	
-				'ACT' => '*',	
-				'ACC' => 'W',	
-				'GCA' => 'R',	'GCG' => 'R',	'GCT' => 'R',	'GCC' => 'R',	
-				'TCA' => 'S',	'TCG' => 'S',	
-				'TCT' => 'R',	'TCC' => 'R',	
-				'CCA' => 'G',	'CCG' => 'G',	'CCT' => 'G',	'CCC' => 'G',	
+				'TTT' => array('F' => 'Phenylalanine'), 'TTC' => array('F' => 'Phenylalanine'),	
+				'TTA' => array('L' => 'Leucine'), 'TTG' => array('L' => 'Leucine'), 'CTT' => array('L' => 'Leucine'), 'CTC' => array('L' => 'Leucine'), 'CTA' => array('L' => 'Leucine'),	'CTG' => array('L' => 'Leucine'),	
+				'ATT' => array('I' => 'Isoleucine'),	'ATC' => array('I' => 'Isoleucine'),	'ATA' => array('I' => 'Isoleucine'),	
+				'ATG' => array('M' => 'Methionine'),	
+				'GTT' => array('V' => 'Valine'), 'GTC' => array('V' => 'Valine'), 'GTA' => array('V' => 'Valine'), 'GTG' => array('V' => 'Valine'),	
+				'TCT' => array('S' => 'Serine'), 'TCC' => array('S' => 'Serine'), 'TCA' => array('S' => 'Serine'), 'TCG' => array('S' => 'Serine'),	
+				'CCT' => array('P' => 'Proline'), 'CCC' => array('P' => 'Proline'), 'CCA' => array('P' => 'Proline'), 'CCG' => array('P' => 'Proline'),	
+				'ACT' => array('T' => 'Threonine'), 'ACC' => array('T' => 'Threonine'), 'ACA' => array('T' => 'Threonine'), 'ACG' => array('T' => 'Threonine'),	
+				'GCT' => array('A' => 'Alanine'), 'GCC' => array('A' => 'Alanine'), 'GCA' => array('A' => 'Alanine'), 'GCG' => array('A' => 'Alanine'),	
+				'TAT' => array('Y' => 'Tyrosine'), 'TAC' => array('Y' => 'Tyrosine'),	
+				'TAA' => array('*' => 'Stop Codon'), 'TAG' => array('*' => 'Stop Codon'),	
+				'CAT' => array('H' => 'Histidine'), 'CAC' => array('H' => 'Histidine'),	
+				'CAA' => array('Q' => 'Glutamine'), 'CAG' => array('Q' => 'Glutamine'),	
+				'AAT' => array('N' => 'Asparagine'), 'AAC' => array('N' => 'Asparagine'),	
+				'AAA' => array('K' => 'Lysine'), 'AAG' => array('K' => 'Lysine'),	
+				'GAT' => array('D' => 'Aspartic acid'), 'GAC' => array('D' => 'Aspartic acid'),	
+				'GAA' => array('E' => 'Glutamic acid'), 'GAG' => array('E' => 'Glutamic acid'),	
+				'TGT' => array('C' => 'Cysteine'), 'TGC' => array('C' => 'Cysteine'),	
+				'TGA' => array('*' => 'Stop Codon'),	
+				'TGG' => array('W' => 'Tryptophan '),	
+				'CGT' => array('R' => 'Arginine'), 'CGC' => array('R' => 'Arginine'), 'CGA' => array('R' => 'Arginine'), 'GCC' => array('R' => 'Arginine'),	
+				'AGT' => array('S' => 'Serine'), 'AGC' => array('S' => 'Serine'),	
+				'AGA' => array('R' => 'Arginine'), 'AGG' => array('R' => 'Arginine'),	
+				'GGT' => array('G' => 'Glycine'), 'GGC' => array('G' => 'Glycine'), 'GGA' => array('G' => 'Glycine'), 'GGG' => array('G' => 'Glycine'),	
 			);
 	    }
 
@@ -49,15 +50,21 @@
 					for ($i=0 ; $i<=$this->lenght ; $i=$i+3)
 					{
 						$cmp = $this->sequence[$i].$this->sequence[$i+1].$this->sequence[$i+2];
-						
-						foreach ($this->aminoAcid as $key => $value) {
-							if (!strcasecmp ($key, $cmp))
-							{
-								$this->protein .= $value;
-							}
-						};
+						$cmp = strtoupper($cmp);
+						if(array_key_exists($cmp, $this->aminoAcid))
+						{
+							array_push($this->protein, $this->aminoAcid[$cmp]);
+						}
 					}
 				}
+				else
+				{
+					return 'A cadeia deve possuir apenas A, T, G e C.';
+				}
+			}
+			else
+			{
+				return 'A cadeia deve possuir número de bases divisível por 3.';
 			}
 
 			return $this->protein;
